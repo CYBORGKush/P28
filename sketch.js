@@ -12,7 +12,7 @@ function setup() {
 	createCanvas(1600, 700);
 	rectMode(CENTER);
 
-    
+
 	engine = Engine.create();
 	world = engine.world;
 	
@@ -20,7 +20,7 @@ function setup() {
 	groundObject=new ground(width/2,670,width,20);
 	dustbinObj=new dustbin(1200,650);
 	//Create a Ground
-	Launcher = new Launcher(paperObject.body,{x:100,y:100})
+	
 
 	var render = Render.create({
 	  element: document.body,
@@ -46,7 +46,6 @@ function draw() {
   paperObject.display();
   groundObject.display();
   dustbinObj.display();
-  Launcher.display();
 
   
   
@@ -56,13 +55,13 @@ function draw() {
  
 }
 
-function mouseDragged(){
-    Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
-}
+function keyPressed() {
+  	if (keyCode === UP_ARROW) {
 
+    	Matter.Body.applyForce(paperObject.body,paperObject.body.position,{x:130,y:-145});
 
-function mouseReleased(){
-    Launcher.fly();
+    
+  	}
 }
 
 
